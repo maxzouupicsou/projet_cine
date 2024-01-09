@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
+const filmRoutes = require('./routes');
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+app.use(express.json()); // Pour parser les requêtes JSON
+app.use('/api', filmRoutes); // Utiliser filmRoutes avec un préfixe de chemin
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Serveur démarré sur le port ${PORT}`);
 });
